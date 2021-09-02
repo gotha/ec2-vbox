@@ -45,3 +45,15 @@ VBoxHeadless --startvm vmname
 VBoxManage unregistervm --delete vmname
 rm -rf ./vms/vmname
 ```
+
+
+## Run examples
+
+To run the examples just execute 
+
+```sh
+./build.sh amzn2-virtualbox-2.0.20210721.2-x86_64.xfs.gpt.vdi docker
+VBoxManage startvm "docker" --type separate
+```
+
+and in a few minutes you will have AmazonLinux VM running docker

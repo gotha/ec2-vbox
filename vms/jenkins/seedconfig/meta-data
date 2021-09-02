@@ -1,0 +1,8 @@
+local-hostname: amz2
+
+# ----------------------------------------------------------
+# Use DHCP to have an IP address assigned
+# ----------------------------------------------------------
+network-interfaces: |
+  auto eth0
+  iface eth0 inet dhcp

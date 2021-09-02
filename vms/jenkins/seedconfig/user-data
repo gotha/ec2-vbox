@@ -1,0 +1,36 @@
+#cloud-config
+#vim:syntax=yaml
+groups:
+  - docker: [ec2-user, gotha]
+users:
+  - default
+  - name: gotha
+    gecos: Hristo Georgiev
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin, docker
+    ssh_import_id: None
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyE0L8ivXyEMysyBiEUvc5xTmDyC4OpaljKvwPKsiZ16PvxM61IHumssaPUGaWYBxpkdQwVqeQigtI3yTz6xHV+Y05Po7ptqBs6LuXFWJ8dExTASq48deYh48M/hoELy6f9Ascs2/WZ39TK4X/Ok3/YH47K1A/o+qu3lfGswAJ393xQ4HioTMETPFag0NigwRPwSaBTJZHkKoMdsOWYPBUwE5l0wjoLLqkWTs0fD/78cxk5ctMaKWiqTq/iEt0Enw7L001rlN2ew24fnKOpkFEC7Wa3MYc3EXH1O0iVQSGC+rFF3hM+D7/m2NIGAvhnWmoBiCOZCUJl9RWehe8LQ1H
+chpasswd:
+  list: |
+    ec2-user:pass
+runcmd:
+  - yum update -y
+  - yum install -y docker
+  - systemctl enable docker
+  - systemctl start docker
+  - amazon-linux-extras install -y java-openjdk11
+  - amazon-linux-extras install -y epel
+  - rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+  - yum install -y jenkins
+  - systemctl enable jenkins
+  - systemctl start jenkins
+
+write_files:
+  - content: |
+      [jenkins]
+      name=Jenkins
+      baseurl=http://pkg.jenkins.io/redhat
+      gpgcheck=0
+    path: /etc/yum.repos.d/jenkins.repo
