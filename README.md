@@ -1,6 +1,6 @@
 # ec2-vbox
 
-Simple setup and script to easily create Virtual Box VMs running on OSX
+Simple setup and script to easily create Virtual Box VMs running Amazon Linux on OSX host
 
 
 ## Download VirtualBox VDI
