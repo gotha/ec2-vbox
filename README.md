@@ -11,19 +11,37 @@ You can read more about why and how in [the official user guide](https://docs.aw
 
 ## Create VM
 
+Firt prepare the project:
+
 ```sh
-./create-vm.sh amzn2-virtualbox-2.0.20210721.2-x86_64.xfs.gpt.vdi vmname
+./prepare.sh vmname
 ```
 
-The script will create new folder inside `./vms/` with copy of the seedconfigs.
+If needed edit the seedconfigs in `./vms/vmname/seedconfig`.
 
-You will be asked if you want to continue with default values. If not, just edit the files and press any key when you are ready.
+When you are ready, execute:
 
-When the script is done you can launch VirtualBox GUI and start the machine
+```sh
+./build.sh amzn2-virtualbox-2.0.20210721.2-x86_64.xfs.gpt.vdi vmname
+```
 
-or you can go headless with:
+## Start VM
+
+
+```sh
+VBoxManage startvm "vmname" --type separate
+```
+
+or headless like this:
 
 ```sh
 VBoxHeadless --startvm vmname
 ```
 
+
+## Clean up
+
+```sh
+VBoxManage unregistervm --delete vmname
+rm -rf ./vms/vmname
+```
