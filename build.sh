@@ -9,7 +9,7 @@ if [ -z "$NAME" ] || [ -z "$VDI_FILE_PATH" ]; then
 fi
 
 PROJECT_DIR="./vms/$NAME"
-NEW_VDI_FILE_NAME="$1.xfs.gpt.vdi"
+NEW_VDI_FILE_NAME="$NAME.xfs.gpt.vdi"
 NEW_VDI_FILE_PATH="$PROJECT_DIR/$NEW_VDI_FILE_NAME"
 SEEDCONFIG_PATH="$PROJECT_DIR/seedconfig"
 SEED_ISO_PATH="$PROJECT_DIR/seed.iso"
