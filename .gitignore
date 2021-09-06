@@ -1,4 +1,6 @@
 .DS_Store
 vms/**/*.iso
 **/*.vdi
+disks
+config
 

@@ -7,7 +7,7 @@ if [ -z "$NAME" ]; then
   exit 1
 fi
 
-mkdir -p "./vms/$NAME"
+mkdir -p "./config/$NAME"
 
 # Prepare seed
-cp -r ./seedconfig "./vms/$NAME/seedconfig"
+cp -r ./seedconfig "./config/$NAME/seedconfig"

@@ -1,4 +1,4 @@
-local-hostname: amz2
+local-hostname: jenkins-vm
 
 # ----------------------------------------------------------
 # Use DHCP to have an IP address assigned

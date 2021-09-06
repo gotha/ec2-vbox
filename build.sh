@@ -8,11 +8,11 @@ if [ -z "$NAME" ] || [ -z "$VDI_FILE_PATH" ]; then
   exit 1
 fi
 
-PROJECT_DIR="./vms/$NAME"
+PROJECT_DIR="./config/$NAME"
 NEW_VDI_FILE_NAME="$NAME.xfs.gpt.vdi"
-NEW_VDI_FILE_PATH="$PROJECT_DIR/$NEW_VDI_FILE_NAME"
 SEEDCONFIG_PATH="$PROJECT_DIR/seedconfig"
-SEED_ISO_PATH="$PROJECT_DIR/seed.iso"
+NEW_VDI_FILE_PATH="./disks/vdi/$NEW_VDI_FILE_NAME"
+SEED_ISO_PATH="./disks/iso/$NAME.iso"
 
 if [ ! -d "$PROJECT_DIR" ]; then
   echo "$PROJECT_DIR does not exist; Maybe you should run ./prepare.sh first"

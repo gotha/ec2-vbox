@@ -17,7 +17,7 @@ Firt prepare the project:
 ./prepare.sh vmname
 ```
 
-If needed edit the seedconfigs in `./vms/vmname/seedconfig`.
+If needed edit the seedconfigs in `./config/vmname/seedconfig`.
 
 When you are ready, execute:
 
@@ -43,15 +43,16 @@ VBoxHeadless --startvm vmname
 
 ```sh
 VBoxManage unregistervm --delete vmname
-rm -rf ./vms/vmname
+rm -rf ./config/vmname
 ```
 
 
 ## Run examples
 
-To run the examples just execute 
+To run the examples (lets say the docker example)
 
 ```sh
+cp -r ./examples/docker ./config/docker
 ./build.sh amzn2-virtualbox-2.0.20210721.2-x86_64.xfs.gpt.vdi docker
 VBoxManage startvm "docker" --type separate
 ```
