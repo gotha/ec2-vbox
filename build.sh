@@ -44,7 +44,9 @@ VBoxManage createvm --name "$NAME" --ostype "Linux_64" --register
 
 VBoxManage modifyvm "$NAME" --ioapic on
 VBoxManage modifyvm "$NAME" --memory 2048 --vram 128
-VBoxManage modifyvm "$NAME" --nic1 nat
+#VBoxManage modifyvm "$NAME" --nic1 nat
+VBoxManage modifyvm "$NAME" --nic1 bridged
+VBoxManage modifyvm "$NAME" --bridgeadapter1 en0
 
 VBoxManage storagectl "$NAME" --name "SATA Controller" --add sata --controller IntelAhci
 VBoxManage storageattach "$NAME" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "$NEW_VDI_FILE_PATH"
